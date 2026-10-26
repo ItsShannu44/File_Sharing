@@ -1,0 +1,160 @@
+{
+  "files": [
+    {
+      "id": "file-1",
+      "name": "Happiness & Tears.mp4",
+      "displayName": "Happiness & Tears",
+      "category": "video",
+      "size": 47710208,
+      "sizeFormatted": "45.5 MB",
+      "duration": "10:32",
+      "thumbnailUrl": "/assets/sample-media/happiness-tears.jpg",
+      "fileUrl": "/uploads/glitter.mp4",
+      "mimeType": "video/mp4",
+      "previewFeatured": true,
+      "cardLayout": "wide",
+      "createdAt": "2026-10-26T14:10:00Z"
+    },
+    {
+      "id": "file-2",
+      "name": "High Hopes.mp4",
+      "displayName": "High Hopes",
+      "category": "video",
+      "size": 52428800,
+      "sizeFormatted": "50 MB",
+      "duration": "02:35",
+      "thumbnailUrl": "/assets/sample-media/high-hopes.jpg",
+      "fileUrl": "/uploads/glitter.mp4",
+      "mimeType": "video/mp4",
+      "previewFeatured": true,
+      "cardLayout": "tall",
+      "createdAt": "2026-10-26T13:45:00Z"
+    },
+    {
+      "id": "file-3",
+      "name": "Imaginary you.mp4",
+      "displayName": "Imaginary you",
+      "category": "video",
+      "size": 220409856,
+      "sizeFormatted": "210.2 MB",
+      "duration": "04:15",
+      "thumbnailUrl": "/assets/sample-media/imaginary-you.jpg",
+      "fileUrl": "/uploads/glitter.mp4",
+      "mimeType": "video/mp4",
+      "previewFeatured": true,
+      "cardLayout": "tall",
+      "createdAt": "2026-10-26T11:20:00Z"
+    },
+    {
+      "id": "file-4",
+      "name": "Glitter.mp4",
+      "displayName": "Glitter.mp4",
+      "category": "video",
+      "size": 36123443,
+      "sizeFormatted": "34.45 MB",
+      "duration": "03:12",
+      "thumbnailUrl": "/assets/sample-media/timeline-1.jpg",
+      "fileUrl": "/uploads/glitter.mp4",
+      "mimeType": "video/mp4",
+      "previewFeatured": false,
+      "cardLayout": "tall",
+      "createdAt": "2026-10-26T09:15:00Z"
+    },
+    {
+      "id": "file-5",
+      "name": "ambient_soundtrack.wav",
+      "displayName": "Ambient Soundtrack",
+      "category": "music",
+      "size": 705644,
+      "sizeFormatted": "705 KB",
+      "duration": "04:00",
+      "thumbnailUrl": "/assets/sample-media/timeline-2.jpg",
+      "fileUrl": "/uploads/ambient_soundtrack.wav",
+      "mimeType": "audio/wav",
+      "previewFeatured": false,
+      "createdAt": "2026-10-25T16:00:00Z"
+    },
+    {
+      "id": "file-6",
+      "name": "Product_Roadmap_2026.pdf",
+      "displayName": "Product Roadmap 2026",
+      "category": "docs",
+      "size": 251658,
+      "sizeFormatted": "246 KB",
+      "duration": null,
+      "thumbnailUrl": null,
+      "fileUrl": "/uploads/Product_Roadmap_2026.pdf",
+      "mimeType": "application/pdf",
+      "previewFeatured": false,
+      "createdAt": "2026-10-25T14:30:00Z"
+    },
+    {
+      "id": "file-7",
+      "name": "MyDocs_Desktop_v2.0.exe",
+      "displayName": "MyDocs Desktop Client v2.0",
+      "category": "apps",
+      "size": 15728640,
+      "sizeFormatted": "15.0 MB",
+      "duration": null,
+      "thumbnailUrl": null,
+      "fileUrl": "/uploads/MyDocs_Desktop_v2.0.exe",
+      "mimeType": "application/octet-stream",
+      "previewFeatured": false,
+      "createdAt": "2026-10-24T18:10:00Z"
+    }
+  ],
+  "downloads": [
+    {
+      "id": "dl-today-1",
+      "fileName": "Glitter.mp4",
+      "fileSize": "34.45 MB",
+      "sizeBytes": 36123443,
+      "status": "waiting",
+      "statusText": "Waiting for download",
+      "progress": 0,
+      "speed": "0 KB/s",
+      "dateGroup": "Today",
+      "fileUrl": "/uploads/glitter.mp4"
+    },
+    {
+      "id": "dl-yesterday-1",
+      "fileName": "Glitter.mp4",
+      "fileSize": "34.45 MB",
+      "sizeBytes": 36123443,
+      "status": "paused",
+      "statusText": "Downloading 65%",
+      "progress": 65,
+      "speed": "2.4 MB/s",
+      "dateGroup": "Yesterday",
+      "fileUrl": "/uploads/glitter.mp4"
+    }
+  ],
+  "timeline": [
+    {
+      "id": "tl-1",
+      "startTime": "15:30",
+      "endTime": "19:30",
+      "title": "Received 3 Images",
+      "count": 3,
+      "totalSize": "50.3 MB",
+      "thumbnails": [
+        "/assets/sample-media/timeline-1.jpg",
+        "/assets/sample-media/timeline-2.jpg",
+        "/assets/sample-media/timeline-3.jpg"
+      ],
+      "receivedAt": "2026-10-26T19:30:00Z"
+    }
+  ],
+  "storageStats": {
+    "totalCapacity": "15.0 GB",
+    "totalUsed": "385.2 MB",
+    "usedPercentage": 2.5,
+    "categories": {
+      "images": "50.3 MB",
+      "music": "0.7 MB",
+      "video": "319.4 MB",
+      "docs": "0.2 MB",
+      "apps": "15.0 MB"
+    }
+  }
+}

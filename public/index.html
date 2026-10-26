@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyDocs - Smart Cloud & File Sharing</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Outer Application Wrapper -->
+  <div class="app-viewport">
+    <div class="app-card">
+      
+      <!-- LEFT SIDEBAR -->
+      <aside class="sidebar-left">
+        <div class="brand">
+          <span class="brand-text">MyDocs</span>
+        </div>
+
+        <nav class="nav-menu">
+          <button class="nav-item active" data-nav="dashboard" title="Dashboard">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" rx="2"></rect>
+              <rect x="14" y="3" width="7" height="7" rx="2"></rect>
+              <rect x="14" y="14" width="7" height="7" rx="2"></rect>
+              <rect x="3" y="14" width="7" height="7" rx="2"></rect>
+            </svg>
+          </button>
+          
+          <button class="nav-item" data-nav="folders" title="Folders">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+          </button>
+
+          <button class="nav-item" data-nav="storage" title="Hard Drive & Storage">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+              <line x1="2" y1="13" x2="22" y2="13"></line>
+              <circle cx="6" cy="16" r="1" fill="currentColor"></circle>
+              <circle cx="10" cy="16" r="1" fill="currentColor"></circle>
+            </svg>
+          </button>
+
+          <button class="nav-item" data-nav="settings" title="Settings">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="nav-item exit-btn" id="exitBtn" title="Disconnect / Exit">
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT CENTER -->
+      <main class="main-content">
+        <!-- Search Bar Header -->
+        <header class="content-header">
+          <div class="search-container">
+            <input type="text" id="searchInput" class="search-input" placeholder="e.g. files, doc..." autocomplete="off">
+            <button class="search-btn" id="searchSubmitBtn" aria-label="Search">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </button>
+          </div>
+
+          <div class="header-actions">
+            <button class="action-pill-btn share-network-btn" id="openShareModalBtn" title="AirDrop / LAN Network Sharing">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                <polyline points="16 6 12 2 8 6"></polyline>
+                <line x1="12" y1="2" x2="12" y2="15"></line>
+              </svg>
+              <span>Share to Device</span>
+            </button>
+
+            <button class="action-pill-btn upload-primary-btn" id="triggerUploadBtn">
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Upload</span>
+            </button>
+            <input type="file" id="hiddenFileInput" multiple style="display: none;">
+          </div>
+        </header>
+
+        <!-- SENDER & RECEIVER DEVICE CONTROL BAR -->
+        <div class="device-role-bar">
+          <div class="device-identity-chip" id="myDeviceChip" title="Click to change your device name">
+            <span class="device-type-icon" id="myDeviceIcon">💻</span>
+            <span class="device-name-text" id="myDeviceName">Windows PC</span>
+            <button class="edit-device-btn" id="editDeviceNameBtn">✎</button>
+          </div>
+
+          <div class="role-mode-selector">
+            <button class="role-pill-btn active" data-role="dual" title="Send and receive files freely">⇄ Dual Mode</button>
+            <button class="role-pill-btn" data-role="sender" title="Optimized for sending files to receivers">📤 Sender</button>
+            <button class="role-pill-btn" data-role="receiver" title="Dedicated Receiver Station: auto-download incoming files">📥 Receiver Station</button>
+          </div>
+
+          <div class="target-receiver-selector">
+            <span class="selector-label">Send to:</span>
+            <select id="targetReceiverSelect" class="receiver-dropdown">
+              <option value="all">⚡ All Receivers (Broadcast)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="content-scrollable">
+          <!-- DEDICATED RECEIVER STATION VIEW (When in Receiver Mode) -->
+          <section class="receiver-station-view" id="receiverStationView" style="display: none;">
+            <div class="radar-container">
+              <div class="radar-pulse-ring ring-1"></div>
+              <div class="radar-pulse-ring ring-2"></div>
+              <div class="radar-pulse-ring ring-3"></div>
+              <div class="radar-center-icon">📥</div>
+            </div>
+            <h2 class="receiver-title">Receiver Station Active</h2>
+            <p class="receiver-subtitle">Files sent from any paired device will be delivered and saved directly onto this device.</p>
+            
+            <div class="receiver-toggles">
+              <label class="auto-save-switch">
+                <input type="checkbox" id="stationAutoDownload" checked>
+                <span class="switch-text">⚡ Automatically download & save incoming files to this device</span>
+              </label>
+            </div>
+
+            <div class="station-received-history">
+              <h3 class="station-history-title">Incoming File Stream:</h3>
+              <div class="station-files-list" id="stationFilesList">
+                <div class="empty-station-msg">Waiting for sender device to transmit files...</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- NORMAL DUAL / SENDER VIEW CONTAINER -->
+          <div id="standardViewContainer">
+          <!-- MOBILE TRANSFER HUB (Optimized for Mobile Browsers) -->
+          <section class="mobile-transfer-hub" id="mobileTransferHub">
+            <div class="mobile-hub-card">
+              <div class="mobile-hub-header">
+                <div class="mobile-hub-status">
+                  <span class="status-dot"></span>
+                  <span>Connected to Windows PC</span>
+                </div>
+                <span class="mobile-hub-badge">Fast Wi-Fi Transfer</span>
+              </div>
+              <h2 class="mobile-hub-title">Send Files to Your Windows PC</h2>
+              <div class="mobile-actions-grid">
+                <button class="mobile-action-card card-action-photos" id="mobileUploadPhotosBtn">
+                  <div class="action-icon-circle">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                      <polyline points="21 15 16 10 5 21"></polyline>
+                    </svg>
+                  </div>
+                  <span>Send Photos & Videos</span>
+                </button>
+
+                <button class="mobile-action-card card-action-camera" id="mobileUploadCameraBtn">
+                  <div class="action-icon-circle">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                      <circle cx="12" cy="13" r="4"></circle>
+                    </svg>
+                  </div>
+                  <span>Take Live Photo</span>
+                </button>
+
+                <button class="mobile-action-card card-action-docs" id="mobileUploadDocsBtn">
+                  <div class="action-icon-circle">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                    </svg>
+                  </div>
+                  <span>Send Documents</span>
+                </button>
+              </div>
+
+              <!-- Hidden mobile file pickers -->
+              <input type="file" id="mobilePhotoInput" multiple accept="image/*,video/*" style="display: none;">
+              <input type="file" id="mobileCameraInput" capture="environment" accept="image/*" style="display: none;">
+              <input type="file" id="mobileDocInput" multiple style="display: none;">
+            </div>
+          </section>
+
+          <!-- Quick Access Section -->
+          <section class="quick-access-section">
+            <div class="section-header">
+              <h2 class="section-title">Quick Access</h2>
+              <span class="active-filter-badge" id="activeFilterBadge" style="display: none;">
+                Showing: <strong id="filterCategoryName">All</strong>
+                <button id="clearFilterBtn" class="clear-filter">✕</button>
+              </span>
+            </div>
+
+            <div class="quick-access-grid">
+              <!-- Images -->
+              <div class="category-item" data-category="image">
+                <div class="category-card card-images">
+                  <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="3" ry="3"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                </div>
+                <span class="category-label">Images</span>
+              </div>
+
+              <!-- Music -->
+              <div class="category-item" data-category="music">
+                <div class="category-card card-music">
+                  <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
+                  </svg>
+                </div>
+                <span class="category-label">Music</span>
+              </div>
+
+              <!-- Video -->
+              <div class="category-item" data-category="video">
+                <div class="category-card card-video">
+                  <svg class="category-icon fill-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                </div>
+                <span class="category-label">Video</span>
+              </div>
+
+              <!-- Docs -->
+              <div class="category-item" data-category="docs">
+                <div class="category-card card-docs">
+                  <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="4" y1="6" x2="20" y2="6"></line>
+                    <line x1="4" y1="12" x2="20" y2="12"></line>
+                    <line x1="4" y1="18" x2="16" y2="18"></line>
+                  </svg>
+                </div>
+                <span class="category-label">Docs</span>
+              </div>
+
+              <!-- Apps -->
+              <div class="category-item" data-category="apps">
+                <div class="category-card card-apps">
+                  <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                    <polyline points="2 17 12 22 22 17"></polyline>
+                    <polyline points="2 12 12 17 22 12"></polyline>
+                  </svg>
+                </div>
+                <span class="category-label">Apps</span>
+              </div>
+
+              <!-- Download -->
+              <div class="category-item" data-category="downloads">
+                <div class="category-card card-downloads">
+                  <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <polyline points="8 12 12 16 16 12"></polyline>
+                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                  </svg>
+                </div>
+                <span class="category-label">Download</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Preview Section -->
+          <section class="preview-section">
+            <div class="section-header">
+              <h2 class="section-title">Preview</h2>
+              <a href="#" class="section-link" id="viewInFoldersLink">View in folders</a>
+            </div>
+
+            <div class="preview-gallery" id="previewGallery">
+              <!-- Card 1: Happiness & Tears (Wide) -->
+              <div class="preview-card card-landscape" data-file-id="file-1" data-video-url="/uploads/glitter.mp4" data-title="Happiness & Tears">
+                <img src="/assets/sample-media/happiness-tears.jpg" alt="Happiness & Tears" class="preview-bg-img">
+                <div class="card-overlay">
+                  <div class="duration-badge">10:32</div>
+                  <div class="card-footer">
+                    <div class="card-meta">
+                      <h3 class="card-title">Happiness & Tears</h3>
+                      <span class="card-size">45.5 MB</span>
+                    </div>
+                    <button class="play-btn" title="Play Video" aria-label="Play">
+                      <svg viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="8 5 19 12 8 19 8 5"></polygon>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2: High Hopes (Portrait) -->
+              <div class="preview-card card-portrait" data-file-id="file-2" data-video-url="/uploads/glitter.mp4" data-title="High Hopes">
+                <img src="/assets/sample-media/high-hopes.jpg" alt="High Hopes" class="preview-bg-img">
+                <div class="card-overlay">
+                  <div class="duration-badge">02:35</div>
+                  <div class="card-footer">
+                    <div class="card-meta">
+                      <h3 class="card-title">High Hopes</h3>
+                      <span class="card-size">50 MB</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3: Imaginary you (Portrait) -->
+              <div class="preview-card card-portrait" data-file-id="file-3" data-video-url="/uploads/glitter.mp4" data-title="Imaginary you">
+                <img src="/assets/sample-media/imaginary-you.jpg" alt="Imaginary you" class="preview-bg-img">
+                <div class="card-overlay">
+                  <div class="duration-badge">04:15</div>
+                  <div class="card-footer">
+                    <div class="card-meta">
+                      <h3 class="card-title">Imaginary you</h3>
+                      <span class="card-size">210.2 MB</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Recent Files Section -->
+          <section class="recent-files-section">
+            <div class="section-header">
+              <h2 class="section-title">Recent Files</h2>
+              <span class="recent-count" id="filesCountBadge">7 files</span>
+            </div>
+
+            <div class="files-table-container">
+              <table class="files-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Size</th>
+                    <th>Date Modified</th>
+                    <th class="text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="filesTableBody">
+                  <!-- Dynamically populated via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Drag & Drop Zone Prompt -->
+            <div class="drop-zone-banner" id="dropZonePrompt">
+              <svg class="drop-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <span>Drag & drop files anywhere here to share instantly</span>
+            </div>
+          </section>
+          </div> <!-- End standardViewContainer -->
+        </div>
+      </main>
+
+      <!-- RIGHT SIDEBAR (DOWNLOADS & RECEIVED TIMELINE) -->
+      <aside class="sidebar-right">
+        <!-- Downloads Panel -->
+        <section class="downloads-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">Downloads</h3>
+            <button class="more-opts-btn" title="Download Options">•••</button>
+          </div>
+
+          <!-- Group: Today -->
+          <div class="download-group" id="groupToday">
+            <span class="group-label">Today</span>
+            <div class="download-items-list" id="todayDownloadsList">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Group: Yesterday -->
+          <div class="download-group" id="groupYesterday">
+            <span class="group-label">Yesterday</span>
+            <div class="download-items-list" id="yesterdayDownloadsList">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </section>
+
+        <!-- File Received Timeline -->
+        <section class="timeline-panel">
+          <div class="panel-header">
+            <h3 class="panel-title">File Received</h3>
+          </div>
+
+          <div class="timeline-container" id="timelineList">
+            <!-- Dynamically populated -->
+          </div>
+        </section>
+      </aside>
+
+    </div>
+  </div>
+
+  <!-- MEDIA PREVIEW MODAL (VIDEO / AUDIO / IMAGE) -->
+  <div class="modal-backdrop" id="mediaModal" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalMediaTitle">Media Preview</h3>
+        <button class="modal-close-btn" id="closeMediaModalBtn">✕</button>
+      </div>
+      <div class="modal-body" id="modalMediaBody">
+        <!-- Injected video, audio, or image element -->
+      </div>
+    </div>
+  </div>
+
+  <!-- AIRDROP / LOCAL NETWORK SHARING MODAL -->
+  <div class="modal-backdrop" id="shareModal" style="display: none;">
+    <div class="modal-dialog modal-dialog-md">
+      <div class="modal-header">
+        <div class="modal-title-with-badge">
+          <h3 class="modal-title">Cross-Device Sharing: Windows ⇄ Mobile</h3>
+          <span class="live-pulse-badge">Live Ready</span>
+        </div>
+        <button class="modal-close-btn" id="closeShareModalBtn">✕</button>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="modal-tabs">
+        <button class="modal-tab active" data-tab="tab-qr">📱 Scan QR Code</button>
+        <button class="modal-tab" data-tab="tab-hotspot">📶 Hotspot Mode</button>
+        <button class="modal-tab" data-tab="tab-firewall">🛡️ Firewall Help</button>
+      </div>
+
+      <div class="modal-body share-modal-body">
+        <!-- TAB 1: Scan QR Code -->
+        <div class="tab-pane active" id="tab-qr">
+          <div class="qr-canvas-wrapper">
+            <div id="mobileQrCode" class="qr-code-box"></div>
+            <div class="qr-instruction-tag">Point your Phone Camera here</div>
+          </div>
+
+          <p class="share-instructions">
+            Scan this QR code using your <strong>iPhone Camera</strong> or <strong>Android Google Lens/Camera</strong> to connect instantly.
+          </p>
+
+          <div class="network-adapter-select-row" id="adapterSelectRow" style="display: none;">
+            <label for="networkIpSelect">Network Adapter:</label>
+            <select id="networkIpSelect" class="network-select"></select>
+          </div>
+
+          <div class="network-url-box">
+            <input type="text" id="networkShareUrl" readonly value="http://localhost:5000">
+            <button class="copy-url-btn" id="copyUrlBtn">Copy Link</button>
+          </div>
+          <p class="share-footnote">Both Windows PC and Mobile Phone must be on the same Wi-Fi or Hotspot.</p>
+        </div>
+
+        <!-- TAB 2: Hotspot Mode -->
+        <div class="tab-pane" id="tab-hotspot" style="display: none;">
+          <div class="hotspot-guide-card">
+            <div class="guide-step">
+              <div class="step-num">1</div>
+              <div class="step-text">
+                <strong>No Wi-Fi? Turn on Mobile Hotspot:</strong>
+                <span>Either turn on <em>Personal Hotspot</em> on your phone and connect your PC to it, OR turn on <em>Mobile Hotspot</em> in Windows Settings.</span>
+              </div>
+            </div>
+            <div class="guide-step">
+              <div class="step-num">2</div>
+              <div class="step-text">
+                <strong>Scan the QR Code:</strong>
+                <span>Direct Wi-Fi speeds reach <strong>30–50 MB/s</strong> with zero internet data used.</span>
+              </div>
+            </div>
+            <div class="guide-step">
+              <div class="step-num">3</div>
+              <div class="step-text">
+                <strong>Direct Device-to-Device:</strong>
+                <span>Files transfer directly over local Wi-Fi without uploading to any third-party cloud.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: Firewall Help -->
+        <div class="tab-pane" id="tab-firewall" style="display: none;">
+          <div class="firewall-help-card">
+            <h4>If your phone says "Cannot Connect" or times out:</h4>
+            <p>Windows Firewall may be blocking incoming connections on port 5000.</p>
+            <div class="firewall-action-box">
+              <p>Run the included 1-click script in the app folder:</p>
+              <code>allow-firewall.bat</code>
+              <p style="margin-top: 8px; font-size: 12px; color: #64748B;">Or in PowerShell as Admin: <code>netsh advfirewall firewall add rule name="MyDocs" dir=in action=allow protocol=TCP localport=5000</code></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SINGLE FILE QR CODE DOWNLOAD MODAL (PC -> MOBILE) -->
+  <div class="modal-backdrop" id="fileQrModal" style="display: none;">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header">
+        <h3 class="modal-title" id="fileQrTitle">Send File to Phone</h3>
+        <button class="modal-close-btn" id="closeFileQrModalBtn">✕</button>
+      </div>
+      <div class="modal-body text-center" style="text-align: center;">
+        <div id="singleFileQrCode" class="qr-code-box" style="margin: 0 auto 16px auto;"></div>
+        <p class="share-instructions">Scan with your phone to download <strong id="fileQrFileName">this file</strong> directly!</p>
+        <div class="network-url-box">
+          <input type="text" id="fileQrDownloadUrl" readonly value="">
+          <button class="copy-url-btn" id="copyFileUrlBtn">Copy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INCOMING FILE POPUP MODAL (RECEIVER DEVICE NOTIFICATION) -->
+  <div class="modal-backdrop" id="incomingTransferModal" style="display: none;">
+    <div class="modal-dialog modal-dialog-sm">
+      <div class="modal-header">
+        <div class="modal-title-with-badge">
+          <h3 class="modal-title">📥 Incoming File Delivery</h3>
+          <span class="live-pulse-badge">Live Beam</span>
+        </div>
+        <button class="modal-close-btn" id="closeIncomingModalBtn">✕</button>
+      </div>
+      <div class="modal-body text-center" style="text-align: center;">
+        <div class="incoming-preview-box">
+          <div class="incoming-icon-badge" id="incomingIconBadge">📄</div>
+          <h3 id="incomingFileNameText" style="font-size: 16px; margin: 10px 0 4px 0; word-break: break-all;">Glitter.mp4</h3>
+          <p id="incomingSenderText" style="font-size: 13px; color: var(--text-secondary); margin-bottom: 18px;">From 💻 Windows PC · 34.45 MB</p>
+        </div>
+        <div class="incoming-modal-actions" style="display: flex; gap: 10px; justify-content: center; margin-bottom: 14px;">
+          <button class="action-pill-btn upload-primary-btn" id="confirmAcceptDownloadBtn" style="flex: 1; justify-content: center;">⚡ Download to Device</button>
+          <button class="action-pill-btn share-network-btn" id="dismissTransferBtn">Dismiss</button>
+        </div>
+        <label class="auto-save-hint" style="display: inline-flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); cursor: pointer;">
+          <input type="checkbox" id="rememberAutoSaveCheckbox" checked>
+          <span>Auto-save future incoming files directly</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPLOAD PROGRESS OVERLAY -->
+  <div class="upload-toast" id="uploadToast" style="display: none;">
+    <div class="toast-icon">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    </div>
+    <div class="toast-content">
+      <div class="toast-title" id="uploadToastTitle">Uploading file...</div>
+      <div class="toast-progress-bar">
+        <div class="toast-progress-fill" id="uploadToastFill" style="width: 0%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Code & App Scripts -->
+  <script src="/js/qrcode.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
